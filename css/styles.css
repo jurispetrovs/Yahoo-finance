@@ -1,0 +1,50 @@
+body {
+    background-color: #D1D1D1;
+}
+
+.parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.left-sidebar {
+    display: inline-block;
+    width: 15%;
+}
+
+.body {
+    display: inline-block;
+    width: 70%;
+}
+
+.right-sidebar {
+    display: inline-block;
+    width: 15%;
+}
+
+table.quote-table {
+    margin: 0 auto;
+    width: 20vmax;
+    border-collapse: collapse;
+    border-width: 2px;
+    border-color: #1A3F48;
+    border-style: solid;
+    text-align: center;
+}
+
+table.quote-table th {
+    color: #ffffff;
+}
+
+table.quote-table td, table.quote-table th {
+    border-width: 2px;
+    border-color: #1A3F48;
+    border-style: solid;
+    padding: 3px;
+}
+
+table.quote-table thead {
+    background-color: #1A3F48;
+}
