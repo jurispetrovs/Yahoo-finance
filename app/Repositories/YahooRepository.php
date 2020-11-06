@@ -32,6 +32,7 @@ class YahooRepository
                 Carbon::now()->toDateTimeString()
             );
         }
+
         return null;
     }
 }
