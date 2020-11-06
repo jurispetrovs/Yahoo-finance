@@ -18,9 +18,9 @@ class QuoteRepository
 
         if ($data) {
             return Quote::create($data);
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     public function insert(Quote $quote): void

@@ -2,11 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Services\QuoteServices\FindQuoteService;
-use App\Services\QuoteServices\InsertQuoteService;
-use App\Services\QuoteServices\GetQuoteDataService;
-use App\Services\QuoteServices\UpdateQuoteService;
-use Carbon\Carbon;
+use App\Services\QuoteService;
 
 class QuotesController
 {
@@ -18,22 +14,7 @@ class QuotesController
     public function show()
     {
         $symbol = (string)$_POST['symbol'];
-
-        $quote = (new GetQuoteDataService())->execute($symbol);
-
-        if (isset($quote)) {
-            if (Carbon::now()->diffInMinutes($quote->getCreatedAt()) > 10) {
-                $yahooQuote = (new FindQuoteService())->execute($symbol);
-                (new UpdateQuoteService())->execute($yahooQuote);
-                $quote = (new GetQuoteDataService())->execute($symbol);
-            }
-        } else {
-            $yahooQuote = (new FindQuoteService())->execute($symbol);
-            if (isset($yahooQuote)) {
-                (new InsertQuoteService())->execute($yahooQuote);
-                $quote = (new GetQuoteDataService())->execute($symbol);
-            }
-        }
+        $quote = (new QuoteService())->execute($symbol);
 
         return require_once __DIR__ . '/../Views/QuoteInformationView.php';
     }
